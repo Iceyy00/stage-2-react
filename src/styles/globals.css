@@ -1,0 +1,124 @@
+/* Container + layout */
+:root{
+  --max-w: 1440px;
+  --accent: #0ea5a4;
+  --bg: #f8fafc;
+  --card: #fff;
+  --muted: #6b7280;
+}
+/* Reset */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:var(--bg);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/* Centered page container */
+.container{
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:24px;
+}
+
+/* Header/Footer placeholders */
+.header, footer{background:transparent; padding:16px 0}
+.app-shell .main-content{min-height:60vh}
+
+/* Cards */
+.card{
+  background:var(--card);
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(15,23,42,0.06);
+  padding:16px;
+  margin:12px 0;
+}
+
+/* Hero with wavy bottom and decorative circles */
+.hero {
+  position:relative;
+  overflow:visible;
+  padding:72px 24px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#7dd3fc11 0%, #a7f3d011 100%);
+  margin-bottom:24px;
+}
+.hero .hero-inner{
+  max-width:1000px;
+}
+.hero__title{font-size:2rem;line-height:1.05;margin:0 0 12px}
+.hero__desc{color:var(--muted);margin:0 0 18px}
+
+/* Wave SVG at bottom using pseudo element */
+.hero::after{
+  content:'';
+  position:absolute;
+  left:0;right:0;bottom:-1px;
+  height:120px;
+  background-repeat:no-repeat;
+  background-size:cover;
+  pointer-events:none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'><path fill='%23ffffff' d='M0,40 C180,120 360,0 720,40 C1080,80 1260,20 1440,60 L1440 120 L0 120 Z'/></svg>");
+  transform:translateY(30px);
+  border-bottom-left-radius:12px;
+  border-bottom-right-radius:12px;
+}
+
+/* Decorative circles */
+.hero .circle{
+  position:absolute;
+  border-radius:999px;
+  filter:blur(6px);
+  opacity:0.9;
+}
+.circle.one{width:120px;height:120px;background:#7dd3fc33; right:40px; top:-30px; transform:translateZ(0)}
+.circle.two{width:80px;height:80px;background:#fde68a33; left:18px; top:10px}
+
+/* Stats and tickets grid */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:16px 0}
+.tickets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+
+/* Tag colors */
+.tag{
+  display:inline-block;padding:6px 8px;border-radius:999px;font-weight:600;font-size:13px;
+}
+.tag.open{background:#d1fae5;color:#065f46}
+.tag.in-progress{background:#fff7ed;color:#92400e}
+.tag.closed{background:#f3f4f6;color:#374151}
+
+/* Buttons */
+button{cursor:pointer;padding:8px 12px;border-radius:8px;border:1px solid transparent;background:var(--accent);color:#fff}
+button.secondary{background:transparent;border:1px solid #e6e9ee;color:var(--muted)}
+button.danger{background:#ef4444;border-color:transparent}
+
+/* Forms and focus */
+label{display:block;margin-bottom:12px;font-size:14px}
+input,select,textarea{
+  width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ee;background:#fff;
+  outline:none;font-size:14px;
+}
+input:focus,select:focus,textarea:focus{
+  box-shadow:0 0 0 4px rgba(14,165,164,0.12);border-color:var(--accent);
+}
+.error{color:#b91c1c;margin-top:8px;font-size:13px}
+
+/* Accessibility focus visible */
+:focus{outline:2px solid transparent;}
+
+/* Responsive tweaks */
+@media (max-width:768px){
+  .hero{padding:40px 16px}
+  .hero__title{font-size:1.5rem}
+}
+
+/* Ensure Link elements using .btn-link have no text decoration and inherit color */
+.btn-link{
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
